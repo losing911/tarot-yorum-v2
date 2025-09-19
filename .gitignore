@@ -1,0 +1,49 @@
+# Environment and configuration files
+.env
+config/config.php.bak
+
+# Cache and logs
+cache/
+logs/
+*.log
+
+# Uploads and user content
+uploads/
+storage/
+
+# Development files
+*.tmp
+*.temp
+homepage_test.php
+homepage_output.html
+check_tables.php
+test_*.php
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Composer
+vendor/
+composer.lock
+
+# Node modules (if using frontend build tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Database backups
+*.sql.bak
+database/backups/
+
+# Session files
+sessions/
+
+# Temporary files
+tmp/
