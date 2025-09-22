@@ -299,5 +299,29 @@ class TarotReading extends BaseModel
                 'icon' => '💕'
             ]
         ];
-        }
     }
+
+    /**
+     * Get recent tarot readings for admin dashboard
+     */
+    public function getRecentReadings($limit = 5)
+    {
+        $this->db->query(
+            'SELECT tr.*, u.username, u.first_name
+             FROM tarot_readings tr
+             LEFT JOIN users u ON tr.user_id = u.id
+             ORDER BY tr.created_at DESC
+             LIMIT :limit'
+        );
+        $this->db->bind(':limit', $limit, PDO::PARAM_INT);
+
+        $readings = $this->db->fetchAll();
+
+        // Decode JSON cards for each reading
+        foreach ($readings as &$reading) {
+            $reading['cards_drawn'] = json_decode($reading['cards_drawn'], true);
+        }
+
+        return $readings;
+    }
+}
