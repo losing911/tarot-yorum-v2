@@ -299,5 +299,5 @@ class TarotReading extends BaseModel
                 'icon' => '💕'
             ]
         ];
+        }
     }
-}
