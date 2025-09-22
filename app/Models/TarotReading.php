@@ -350,4 +350,12 @@ class TarotReading extends BaseModel
 
         return $readings;
     }
+
+    /**
+     * Get recent readings for a specific user
+     */
+    public function getUserRecentReadings($userId, $limit = 5)
+    {
+        return $this->getUserReadings($userId, $limit, 0);
+    }
 }
