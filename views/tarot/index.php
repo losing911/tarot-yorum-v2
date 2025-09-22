@@ -1,5 +1,4 @@
 <?php $title = $page_title; ?>
-<?php include '../views/layouts/main.php'; ?>
 
 <?php ob_start(); ?>
 
@@ -487,5 +486,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 </script>
 
 <?php $content = ob_get_clean(); ?>
-
-<?php include '../views/layouts/main.php'; ?>
