@@ -324,4 +324,30 @@ class TarotReading extends BaseModel
 
         return $readings;
     }
+
+    /**
+     * Get public readings by specific user
+     */
+    public function getPublicReadingsByUser($userId, $limit = 10)
+    {
+        $this->db->query(
+            'SELECT tr.*, u.username, u.first_name
+             FROM tarot_readings tr
+             LEFT JOIN users u ON tr.user_id = u.id
+             WHERE tr.user_id = :user_id AND tr.is_public = 1
+             ORDER BY tr.created_at DESC
+             LIMIT :limit'
+        );
+        $this->db->bind(':user_id', $userId);
+        $this->db->bind(':limit', $limit, PDO::PARAM_INT);
+
+        $readings = $this->db->fetchAll();
+
+        // Decode JSON cards for each reading
+        foreach ($readings as &$reading) {
+            $reading['cards_drawn'] = json_decode($reading['cards_drawn'], true);
+        }
+
+        return $readings;
+    }
 }

@@ -404,4 +404,33 @@ class User extends BaseModel
             return [];
         }
     }
+
+    /**
+     * Update user profile
+     */
+    public function updateProfile($userId, $data)
+    {
+        try {
+            $this->db->beginTransaction();
+
+            $sql = 'UPDATE users SET first_name = :first_name, last_name = :last_name, birth_date = :birth_date, birth_time = :birth_time, birth_place = :birth_place, updated_at = NOW() WHERE id = :id';
+            $this->db->query($sql);
+            $this->db->bind(':first_name', $data['first_name']);
+            $this->db->bind(':last_name', $data['last_name']);
+            $this->db->bind(':birth_date', $data['birth_date']);
+            $this->db->bind(':birth_time', $data['birth_time']);
+            $this->db->bind(':birth_place', $data['birth_place']);
+            $this->db->bind(':id', $userId);
+
+            $result = $this->db->execute();
+
+            $this->db->commit();
+            return $result;
+
+        } catch (Exception $e) {
+            $this->db->rollback();
+            error_log('User updateProfile Error: ' . $e->getMessage());
+            return false;
+        }
+    }
 }
