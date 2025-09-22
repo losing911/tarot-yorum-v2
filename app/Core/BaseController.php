@@ -126,7 +126,7 @@ abstract class BaseController
      */
     private function getUserById($id)
     {
-        $this->db->query('SELECT * FROM users WHERE id = :id AND is_active = 1');
+        $this->db->query('SELECT * FROM users WHERE id = :id AND status = \'active\'');
         $this->db->bind(':id', $id);
         return $this->db->fetch();
     }
