@@ -25,27 +25,20 @@ class HomeController extends BaseController
     {
         try {
             // Get all zodiac signs for the grid (with fallback)
-            $zodiacSigns = [];
-            try {
-                $zodiacSigns = $this->zodiacModel->findAll();
-            } catch (Exception $e) {
-                error_log('Zodiac Signs Error: ' . $e->getMessage());
-                // Fallback zodiac signs data
-                $zodiacSigns = [
-                    ['sign' => 'koc', 'name' => 'Koç', 'symbol' => '♈', 'element' => 'Ateş', 'date_range' => '21 Mart - 19 Nisan'],
-                    ['sign' => 'boga', 'name' => 'Boğa', 'symbol' => '♉', 'element' => 'Toprak', 'date_range' => '20 Nisan - 20 Mayıs'],
-                    ['sign' => 'ikizler', 'name' => 'İkizler', 'symbol' => '♊', 'element' => 'Hava', 'date_range' => '21 Mayıs - 20 Haziran'],
-                    ['sign' => 'yengec', 'name' => 'Yengeç', 'symbol' => '♋', 'element' => 'Su', 'date_range' => '21 Haziran - 22 Temmuz'],
-                    ['sign' => 'aslan', 'name' => 'Aslan', 'symbol' => '♌', 'element' => 'Ateş', 'date_range' => '23 Temmuz - 22 Ağustos'],
-                    ['sign' => 'basak', 'name' => 'Başak', 'symbol' => '♍', 'element' => 'Toprak', 'date_range' => '23 Ağustos - 22 Eylül'],
-                    ['sign' => 'terazi', 'name' => 'Terazi', 'symbol' => '♎', 'element' => 'Hava', 'date_range' => '23 Eylül - 22 Ekim'],
-                    ['sign' => 'akrep', 'name' => 'Akrep', 'symbol' => '♏', 'element' => 'Su', 'date_range' => '23 Ekim - 21 Kasım'],
-                    ['sign' => 'yay', 'name' => 'Yay', 'symbol' => '♐', 'element' => 'Ateş', 'date_range' => '22 Kasım - 21 Aralık'],
-                    ['sign' => 'oglak', 'name' => 'Oğlak', 'symbol' => '♑', 'element' => 'Toprak', 'date_range' => '22 Aralık - 19 Ocak'],
-                    ['sign' => 'kova', 'name' => 'Kova', 'symbol' => '♒', 'element' => 'Hava', 'date_range' => '20 Ocak - 18 Şubat'],
-                    ['sign' => 'balik', 'name' => 'Balık', 'symbol' => '♓', 'element' => 'Su', 'date_range' => '19 Şubat - 20 Mart']
-                ];
-            }
+            $zodiacSigns = [
+                ['sign' => 'koc', 'name' => 'Koç', 'symbol' => '♈', 'element' => 'Ateş', 'date_range' => '21 Mart - 19 Nisan'],
+                ['sign' => 'boga', 'name' => 'Boğa', 'symbol' => '♉', 'element' => 'Toprak', 'date_range' => '20 Nisan - 20 Mayıs'],
+                ['sign' => 'ikizler', 'name' => 'İkizler', 'symbol' => '♊', 'element' => 'Hava', 'date_range' => '21 Mayıs - 20 Haziran'],
+                ['sign' => 'yengec', 'name' => 'Yengeç', 'symbol' => '♋', 'element' => 'Su', 'date_range' => '21 Haziran - 22 Temmuz'],
+                ['sign' => 'aslan', 'name' => 'Aslan', 'symbol' => '♌', 'element' => 'Ateş', 'date_range' => '23 Temmuz - 22 Ağustos'],
+                ['sign' => 'basak', 'name' => 'Başak', 'symbol' => '♍', 'element' => 'Toprak', 'date_range' => '23 Ağustos - 22 Eylül'],
+                ['sign' => 'terazi', 'name' => 'Terazi', 'symbol' => '♎', 'element' => 'Hava', 'date_range' => '23 Eylül - 22 Ekim'],
+                ['sign' => 'akrep', 'name' => 'Akrep', 'symbol' => '♏', 'element' => 'Su', 'date_range' => '23 Ekim - 21 Kasım'],
+                ['sign' => 'yay', 'name' => 'Yay', 'symbol' => '♐', 'element' => 'Ateş', 'date_range' => '22 Kasım - 21 Aralık'],
+                ['sign' => 'oglak', 'name' => 'Oğlak', 'symbol' => '♑', 'element' => 'Toprak', 'date_range' => '22 Aralık - 19 Ocak'],
+                ['sign' => 'kova', 'name' => 'Kova', 'symbol' => '♒', 'element' => 'Hava', 'date_range' => '20 Ocak - 18 Şubat'],
+                ['sign' => 'balik', 'name' => 'Balık', 'symbol' => '♓', 'element' => 'Su', 'date_range' => '19 Şubat - 20 Mart']
+            ];
             
             // Get featured blog posts (with fallback)
             $featuredPosts = [];

@@ -267,4 +267,37 @@ class TarotReading extends BaseModel
         
         return '0.0.0.0';
     }
+    
+    /**
+     * Get available tarot spreads
+     */
+    public function getAvailableSpreads()
+    {
+        return [
+            'single_card' => [
+                'name' => 'Tek Kart Falı',
+                'description' => 'Günlük rehberlik için tek kart çekimi',
+                'cards' => 1,
+                'icon' => '🃏'
+            ],
+            'three_card' => [
+                'name' => 'Üç Kart Falı', 
+                'description' => 'Geçmiş, şimdi ve gelecek için üç kart',
+                'cards' => 3,
+                'icon' => '🎴'
+            ],
+            'celtic_cross' => [
+                'name' => 'Kelt Haçı',
+                'description' => 'Detaylı analiz için 10 kartlık spread',
+                'cards' => 10,
+                'icon' => '✨'
+            ],
+            'love_spread' => [
+                'name' => 'Aşk Falı',
+                'description' => 'İlişkiler ve aşk hayatı için özel spread',
+                'cards' => 5,
+                'icon' => '💕'
+            ]
+        ];
+    }
 }

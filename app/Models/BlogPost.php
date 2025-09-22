@@ -112,11 +112,11 @@ class BlogPost
      */
     public function getFeaturedPosts($limit = 3)
     {
-        $sql = "SELECT p.*, u.name as author_name,
+        $sql = "SELECT p.*, u.username as author_name,
                        (SELECT COUNT(*) FROM blog_comments c WHERE c.post_id = p.id AND c.status = 'approved') as comment_count
                 FROM blog_posts p 
                 LEFT JOIN users u ON p.author_id = u.id 
-                WHERE p.status = 'published' AND p.is_featured = 1
+                WHERE p.status = 'published'
                 ORDER BY p.created_at DESC 
                 LIMIT :limit";
         
