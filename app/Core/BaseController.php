@@ -113,6 +113,14 @@ abstract class BaseController
     }
     
     /**
+     * Check if user is logged in
+     */
+    protected function isLoggedIn()
+    {
+        return $this->getCurrentUser() !== null;
+    }
+    
+    /**
      * Check if current user is admin
      */
     protected function isAdmin()
