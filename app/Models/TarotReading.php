@@ -51,7 +51,7 @@ class TarotReading extends BaseModel
     public function getPublicReadings($limit = 5)
     {
         $this->db->query(
-            'SELECT tr.*, u.username, u.first_name 
+            'SELECT tr.*, u.username, u.full_name 
              FROM tarot_readings tr
              LEFT JOIN users u ON tr.user_id = u.id
              WHERE tr.is_public = 1
@@ -83,7 +83,7 @@ class TarotReading extends BaseModel
      */
     public function getReadingForUser($readingId, $userId = null)
     {
-        $sql = 'SELECT tr.*, u.username, u.first_name 
+        $sql = 'SELECT tr.*, u.username, u.full_name 
                 FROM tarot_readings tr
                 LEFT JOIN users u ON tr.user_id = u.id
                 WHERE tr.id = :id';
@@ -331,7 +331,7 @@ class TarotReading extends BaseModel
     public function getPublicReadingsByUser($userId, $limit = 10)
     {
         $this->db->query(
-            'SELECT tr.*, u.username, u.first_name
+            'SELECT tr.*, u.username, u.full_name
              FROM tarot_readings tr
              LEFT JOIN users u ON tr.user_id = u.id
              WHERE tr.user_id = :user_id AND tr.is_public = 1
