@@ -65,7 +65,7 @@ class AuthController extends BaseController
             $this->redirect('/login', 'E-posta veya şifre hatalı.', 'error');
         }
         
-        if (!$user['is_active']) {
+        if ($user['status'] !== 'active') {
             $this->redirect('/login', 'Hesabınız devre dışı bırakılmış.', 'error');
         }
         
