@@ -469,7 +469,7 @@ class BlogController extends BaseController
     /**
      * Check if current user is admin
      */
-    private function isAdmin()
+    protected function isAdmin()
     {
         return isset($_SESSION['user_id']) && isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
     }

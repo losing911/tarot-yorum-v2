@@ -10,11 +10,11 @@ class ZodiacSign extends BaseModel
     protected $fillable = ['name', 'slug', 'symbol', 'element', 'quality', 'ruling_planet', 'date_range', 'description', 'image'];
     
     /**
-     * Find zodiac sign by slug
+     * Find zodiac sign by slug (actually uses 'sign' column)
      */
     public function findBySlug($slug)
     {
-        return $this->findWhere('slug', $slug);
+        return $this->findWhere('sign', $slug);
     }
     
     /**

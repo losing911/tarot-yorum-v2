@@ -278,25 +278,45 @@ class TarotReading extends BaseModel
                 'name' => 'Tek Kart Falı',
                 'description' => 'Günlük rehberlik için tek kart çekimi',
                 'cards' => 1,
-                'icon' => '🃏'
+                'card_count' => 1,
+                'icon' => '🃏',
+                'difficulty' => 'Kolay',
+                'suitable_topics' => 'Günlük Rehberlik, Hızlı Cevap',
+                'type' => 'single_card',
+                'estimated_time' => 2
             ],
             'three_card' => [
                 'name' => 'Üç Kart Falı', 
                 'description' => 'Geçmiş, şimdi ve gelecek için üç kart',
                 'cards' => 3,
-                'icon' => '🎴'
+                'card_count' => 3,
+                'icon' => '🎴',
+                'difficulty' => 'Orta',
+                'suitable_topics' => 'Geçmiş-Analiz, Güncel Durum, Gelecek Tahmini',
+                'type' => 'three_card',
+                'estimated_time' => 5
             ],
             'celtic_cross' => [
                 'name' => 'Kelt Haçı',
                 'description' => 'Detaylı analiz için 10 kartlık spread',
                 'cards' => 10,
-                'icon' => '✨'
+                'card_count' => 10,
+                'icon' => '✨',
+                'difficulty' => 'Zor',
+                'suitable_topics' => 'Derin Analiz, Karmaşık Sorular, Uzun Vadeli',
+                'type' => 'celtic_cross',
+                'estimated_time' => 15
             ],
             'love_spread' => [
                 'name' => 'Aşk Falı',
                 'description' => 'İlişkiler ve aşk hayatı için özel spread',
                 'cards' => 5,
-                'icon' => '💕'
+                'card_count' => 5,
+                'icon' => '💕',
+                'difficulty' => 'Orta',
+                'suitable_topics' => 'Aşk, İlişkiler, Partner Uyumu',
+                'type' => 'love_spread',
+                'estimated_time' => 8
             ]
         ];
     }
@@ -307,7 +327,7 @@ class TarotReading extends BaseModel
     public function getRecentReadings($limit = 5)
     {
         $this->db->query(
-            'SELECT tr.*, u.username, u.first_name
+            'SELECT tr.*, u.username, u.full_name
              FROM tarot_readings tr
              LEFT JOIN users u ON tr.user_id = u.id
              ORDER BY tr.created_at DESC
