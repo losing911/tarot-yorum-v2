@@ -1,5 +1,4 @@
 <?php $title = $page_title; ?>
-<?php include '../views/layouts/main.php'; ?>
 
 <?php ob_start(); ?>
 
@@ -661,5 +660,3 @@ async function generateReading() {
 </script>
 
 <?php $content = ob_get_clean(); ?>
-
-<?php include '../views/layouts/main.php'; ?>

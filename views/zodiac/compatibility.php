@@ -1,5 +1,4 @@
 <?php $title = $page_title; ?>
-<?php include '../views/layouts/main.php'; ?>
 
 <?php ob_start(); ?>
 
@@ -458,5 +457,3 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <?php $content = ob_get_clean(); ?>
-
-<?php include '../views/layouts/main.php'; ?>
